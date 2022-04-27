@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import Cal from './components/Cal'
+import Cal from "./components/Cal";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Cal
-  }
-}
+    Cal,
+  },
+};
 </script>
 
 <style>
