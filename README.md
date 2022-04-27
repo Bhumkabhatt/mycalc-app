@@ -1,1 +1,1 @@
-# mycalc-app
+# Simplecal
