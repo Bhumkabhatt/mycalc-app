@@ -14,7 +14,7 @@
     </div>
     <button class="button" type="submit">Calculate monthly payment</button>
   </form>
-  <p>monthly payment: {{ monthlyPayment.toFixed(2) }}</p>
+  <p><label class="label danger"> monthly payment: {{ monthlyPayment.toFixed(2) }}</label></p>
 </template>
 
 <script>
@@ -64,6 +64,8 @@ export default {
   padding-right: 10px;
   font-family: Arial;
   text-align:left;
+   font-weight: bold;
+  line-height: 40px;
 }
 .success {background-color: #04AA6D;} /* Green */
 .info {background-color: #2196F3;} /* Blue */
@@ -81,5 +83,7 @@ export default {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  font-weight: bold;
+  line-height: 40px;
 }
 </style>
