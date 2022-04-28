@@ -1,13 +1,13 @@
 <template>
-  <Cal></Cal>
+  <EMIcal></EMIcal>
 </template>
 
 <script>
-import Cal from "./components/Cal";
+import EMIcal from "./components/EMIcal";
 export default {
   name: "App",
   components: {
-    Cal,
+    EMIcal,
   },
 };
 </script>
