@@ -1,18 +1,18 @@
 <template>
   <form @submit.prevent="calculate">
     <div>
-      <label>loan amount</label>
+      <label class="label success">Loan amount</label>
       <input v-model.number="loanAmount" />
     </div>
     <div>
-      <label>interest rate</label>
+      <label class="label info">Interest rate</label>
       <input v-model.number="interestRate" />
     </div>
     <div>
-      <label>number of months to pay off loan</label>
+      <label class="label warning">Number of months to pay off loan</label>
       <input v-model.number="numMonths" />
     </div>
-    <button type="submit">calculate monthly payment</button>
+    <button class="button" type="submit">Calculate monthly payment</button>
   </form>
   <p>monthly payment: {{ monthlyPayment.toFixed(2) }}</p>
 </template>
@@ -51,3 +51,35 @@ export default {
   },
 };
 </script>
+
+
+<style>
+
+
+.label {
+  width:180px;
+  height: 100px;
+  clear:left;
+  color: white;
+  padding-right: 10px;
+  font-family: Arial;
+  text-align:left;
+}
+.success {background-color: #04AA6D;} /* Green */
+.info {background-color: #2196F3;} /* Blue */
+.warning {background-color: #ff9800;} /* Orange */
+.danger {background-color: #f44336;} /* Red */ 
+.other {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
