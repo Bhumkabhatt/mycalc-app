@@ -1,42 +1,69 @@
 <template>
-  <div class="m-3">
-    Board
-    <div>No Ref: {{ number + 1 }}</div>
-    <div>Ref: {{ refNumber }}</div>
-    <div>Reactive: {{ reactiveNumber }}</div>
+  <div v-if="xWins || oWins">
+    <div v-if="xWins">x wins</div>
+    <div v-if="oWins">o wins</div>
+    <button @click="restart">restart</button>
   </div>
+  <form v-else>
+    <div v-for="i in 3" :key="i">
+      <span v-for="j in 3" :key="j">
+        <input v-model.trim="board[i - 1][j - 1]" style="width: 20px" />
+      </span>
+    </div>
+  </form>
 </template>
 
 <script>
-import { ref, reactive } from 'vue'
-export default {
-  setup() {
-    let number = 1
-    const refNumber = ref(1)
-    const reactiveNumber = reactive({ count: 1 })
-    setInterval(() => {
-      number += 1
-      refNumber.value += 1
-      reactiveNumber.count += 1
-    }, 1000)
-    return { number, refNumber, reactiveNumber }
-  }
-}
-</script>
+const board = [[], [], []];
 
-<style scoped>
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 70px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 100px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 100px;
-}
-</style>
+export default {
+  name: "App",
+  data() {
+    return {
+      board,
+    };
+  },
+  computed: {
+    xWins() {
+      return this.isWinner("x");
+    },
+    oWins() {
+      return this.isWinner("o");
+    },
+  },
+  methods: {
+    restart() {
+      this.board = [[], [], []];
+    },
+    isWinner(player) {
+      const { board } = this;
+      return (
+        (board[0][0] === player &&
+          board[0][1] === player &&
+          board[0][2] === player) ||
+        (board[1][0] === player &&
+          board[1][1] === player &&
+          board[1][2] === player) ||
+        (board[2][0] === player &&
+          board[2][1] === player &&
+          board[2][2] === player) ||
+        (board[0][0] === player &&
+          board[1][0] === player &&
+          board[2][0] === player) ||
+        (board[0][1] === player &&
+          board[1][1] === player &&
+          board[2][1] === player) ||
+        (board[0][2] === player &&
+          board[1][2] === player &&
+          board[2][2] === player) ||
+        (board[0][0] === player &&
+          board[1][1] === player &&
+          board[2][2] === player) ||
+        (board[0][2] === player &&
+          board[1][1] === player &&
+          board[2][0] === player)
+      );
+    },
+  },
+};
+</script>
